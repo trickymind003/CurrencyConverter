@@ -3,6 +3,7 @@ package com.college.converter;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,19 +25,25 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     static private final Float CONVERSION_RATE = 0.80F;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Log entry message for onCreate
+        Log.i("MainActivity", "onCreate method called");
+
         Button buttonConvert = findViewById(R.id.convertButton);
 
-        buttonConvert.setOnClickListener( view ->  {
+        buttonConvert.setOnClickListener(view -> {
             convertCurrency(view);
-        } );
+        });
     }
 
     public void convertCurrency(View view) {
+        // Log entry message for convertCurrency
+        Log.i("MainActivity", "convertCurrency method called");
 
         EditText inputView = findViewById(R.id.entryId);
 
@@ -49,7 +56,10 @@ public class MainActivity extends AppCompatActivity {
 
             Float resultFloat = inputAmountDecimal * CONVERSION_RATE;
 
-            resultView.setText( resultFloat + " Euros" );
+            resultView.setText(resultFloat + " Euros");
         }
+
+        // Log exit message for convertCurrency
+        Log.i("MainActivity", "convertCurrency method finished");
     }
 }

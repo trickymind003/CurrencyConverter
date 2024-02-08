@@ -21,9 +21,7 @@ import java.util.Locale;
     ** Each task must be done in a separate branch and merged to the main branch
     after completion using a Pull Request.
     ** Each task must be done by a different team member.
-
 */
-
 public class MainActivity extends AppCompatActivity {
     static private final Float CONVERSION_RATE = 0.80F;
 
@@ -34,13 +32,13 @@ public class MainActivity extends AppCompatActivity {
 
         Button buttonConvert = findViewById(R.id.convertButton);
 
-        buttonConvert.setOnClickListener(view -> {
-            convertCurrency(view);
-        });
+        // Using method reference
+        buttonConvert.setOnClickListener(this::convertCurrency);
     }
 
+    // Method with the same signature as OnClickListener's onClick method
     public void convertCurrency(View view) {
-
+        // Your existing implementation
         EditText inputView = findViewById(R.id.entryId);
         TextView resultView = findViewById(R.id.resultId);
 

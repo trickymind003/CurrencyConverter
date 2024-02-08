@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.Locale;
+
 /*
     TODOs:
     In groups of 4, complete the following tasks, 1 for each team member:
@@ -24,6 +26,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     static private final Float CONVERSION_RATE = 0.80F;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,25 +34,26 @@ public class MainActivity extends AppCompatActivity {
 
         Button buttonConvert = findViewById(R.id.convertButton);
 
-        buttonConvert.setOnClickListener( view ->  {
+        buttonConvert.setOnClickListener(view -> {
             convertCurrency(view);
-        } );
+        });
     }
 
     public void convertCurrency(View view) {
 
         EditText inputView = findViewById(R.id.entryId);
+        TextView resultView = findViewById(R.id.resultId);
 
         String inputAmount = inputView.getText().toString();
 
-        TextView resultView = findViewById(R.id.resultId);
-
         if (!inputAmount.isEmpty()) {
             Float inputAmountDecimal = Float.valueOf(inputAmount);
-
             Float resultFloat = inputAmountDecimal * CONVERSION_RATE;
 
-            resultView.setText( resultFloat + " Euros" );
+            String resultText = String.format(Locale.getDefault(), "%.2f%s",
+                    resultFloat, getString(R.string.result_euros_Suffix));
+
+            resultView.setText(resultText);
         }
     }
 }

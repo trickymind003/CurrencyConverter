@@ -9,7 +9,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.Locale;
-
 /*
     TODOs:
     In groups of 4, complete the following tasks, 1 for each team member:
